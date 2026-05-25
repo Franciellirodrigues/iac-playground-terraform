@@ -8,29 +8,29 @@
 
 ---
 
-## 📌 Sobre o Projeto
+## 📌 About the Project
 
-Este repositório foi desenvolvido como um **laboratório prático (Playground)** focado em conceitos de **Infraestrutura como Código (IaC)** e automação de deploys. O principal objetivo é demonstrar a integração contínua (CI/CD) de arquivos de configuração do Terraform através de uma esteira automatizada de ponta a ponta.
+This repository was developed as a **hands-on laboratory (Playground)** focused on **Infrastructure as Code (IaC)** concepts and deployment automation. The main objective is to demonstrate the continuous integration and continuous deployment (CI/CD) of Terraform configuration files through an end-to-end automated pipeline.
 
-Para garantir a segurança, portabilidade e agilidade nos testes, o laboratório utiliza o **Provedor Local** do Terraform para simular o provisionamento de artefatos de infraestrutura de forma isolada dentro do ambiente da esteira.
-
----
-
-## 🚀 Tecnologias e Ferramentas
-
-* **[Terraform](https://www.terraform.io/)** (v1.x): Ferramenta open-source de orquestração que permite definir a infraestrutura de forma declarativa, legível e versionável.
-* **[GitHub Actions](https://github.com/features/actions)**: Plataforma de CI/CD integrada ao ecossistema GitHub para automação dos gatilhos de validação e aplicação do código.
+To ensure security, portability, and agility during testing, the laboratory utilizes the Terraform **Local Provider** to simulate the provisioning of infrastructure artifacts in an isolated manner within the pipeline runner environment.
 
 ---
 
-## ⚙️ Arquitetura da Esteira (CI/CD Pipeline)
+## 🚀 Technologies & Tools
 
-O workflow de automação está configurado no diretório `.github/workflows/terraform.yml`. A esteira é disparada automaticamente a cada `push` realizado na branch principal (`main`), executando os seguintes estágios:
+* **[Terraform](https://www.terraform.io/)** (v1.x): An open-source orchestration tool that allows defining infrastructure declaratively, making it human-readable and versionable.
+* **[GitHub Actions](https://github.com/features/actions)**: A CI/CD platform integrated into the GitHub ecosystem to automate code validation triggers and enforcement.
+
+---
+
+## ⚙️ Pipeline Architecture (CI/CD Workflow)
+
+The automation workflow is configured inside the `.github/workflows/terraform.yml` directory. The pipeline triggers automatically upon every `push` event to the primary branch (`main`), executing the following operational stages:
 
 ```mermaid
 graph TD
-    A[Push na branch main] --> B[Checkout do Código]
-    B --> C[Setup do ambiente Terraform]
+    A[Push to main branch] --> B[Checkout Source Code]
+    B --> C[Setup Terraform Environment]
     C --> D[Terraform Init]
     D --> E[Terraform Plan]
     E --> F[Terraform Apply]
